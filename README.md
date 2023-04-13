@@ -26,6 +26,7 @@ Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta 
 Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.</br></br>
 
 Só isso?</br>
-Só! Mas se quiser fazer a diferença, tente implementar um pouco de TDD e utilizar docker para execução do projeto.</br></br>
+Só! Mas se quiser fazer a diferença, tente implementar um pouco de TDD e utilizar docker para execução do projeto.</br><
 
 Boa sorte! :)
+
