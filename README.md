@@ -1,40 +1,31 @@
-# case-estante-virtual
+Teste de Backend </br>
+Olá Dev! Tudo bem?</br></br>
 
-Teste prático da EstanteVirtual</br>
-Jogos Olímpicos
-Com a chegada dos jogos olímpicos, fomos designados para construir uma API REST em Ruby para o COB (Comitê Olímico Brasileiro), que será responsável por marcar e dizer os vencedores das seguintes modalidades:</br></br>
+Nós estamos sempre em busca de profissionais interessantes e interessados, com boa capacidade de aprendizado, adaptação e principalmente bom senso!</br>
 
-100m rasos: Menor tempo vence
-Lançamento de Dardo: Maior distância vence</br></br>
+Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.</br>
 
-API
-Através da API, deveremos ser capazes de:
+Vamos ao teste!</br></br>
 
-Criar uma competição
-Cadastrar resultados para uma competição (todos os campos são obrigatórios), ex:</br>
-{
-  "competicao": "100m classificatoria 1", 
-  "atleta": "Joao das Neves", 
-  "value": "10.234", 
-  "unidade": "s"
-}</br>
-ex:</br>
+Desafio Pokémon Go!</br>
+Sua missão é importar os dados do Pokemon Go, que estão no excel, e criar uma API usando NodeJS para que possamos consumir estes dados de maneira prática, rápida e automatizada.</br>
 
-{
-  "competicao": "Dardo semifinal", 
-  "atleta": "Claudio", 
-  "value": "70.43", 
-  "unidade": "m"
-}</br></br>
-Finalizar uma competição.
-Retornar o ranking da competição, exibindo a posição final de cada atleta.</br></br>
-Detalhes:</br>
-A API não deve aceitar cadastros de resultados se a competição já estiver encerrada.</br>
-A API pode retornar o ranking/resultado parcial, caso a disputa ainda não estiver encerrada.</br>
-No caso da competição do lançamento de dardos, cada atleta terá 3 chances, e o resultado da competição deverá levar em conta o lançamento mais distante de cada atleta.</br>
-O Design da API, bem como input e output dos dados, fica a seu critério, sendo inclusive um dos pontos de avaliação.</br>
-Testes são obrigatórios.</br>
-Necessária criação de um Readme para informar o passo a passo de como rodar a API.</br>
-Não é necessário criar um banco de dados, podendo manter os dados na memória. (hint: sqlite)</br>
-É imperativo a utilização de Ruby para a criação da API Rest.</br>
-Sugerimos a utilização do git para versionar a solução. Um Pull Request (PR) para este repo, num branch com seu nome_sobrenome seria excelente, pois mais do que analisar o código, queremos analisar o fluxo de trabalho, a linha de pensamento e como evoluiu o código até chegar na solução.
+Esta API deverá seguir o mínimo de práticas RESTful e conter listagens, busca, paginação e filtros. Fique à vontade para decidir quais filtros são mais interessantes.</br></br>
+
+Consigo fazer?</br>
+Consegue sim! Só precisa saber (ou aprender agora) um pouco sobre as seguintes tecnologias:</br></br>
+
+Conceitos de API RESTful</br>
+Modelagem de dados</br>
+NodeJS</br>
+Algum banco de dados, por exemplo, MySQL, SQL Server, MongoDB, etc...</br>
+Git</br>
+Por onde começo?</br>
+Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.</br></br>
+
+Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.</br></br>
+
+Só isso?</br>
+Só! Mas se quiser fazer a diferença, tente implementar um pouco de TDD e utilizar docker para execução do projeto.</br></br>
+
+Boa sorte! :)
