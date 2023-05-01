@@ -1,4 +1,5 @@
 
+import { BaseError } from "../Error/BaseError";
 import { BaseDatabase } from "./BaseDataBase";
 
 
@@ -16,7 +17,7 @@ export class PokemonDataBase extends BaseDatabase {
             return result[0];
         } catch (error) {
             if (error instanceof Error) {
-                // throw new Error(400, "error.message");
+                throw new BaseError(400, "erro no PokemonDB");
             }
         }
     }
@@ -30,7 +31,7 @@ export class PokemonDataBase extends BaseDatabase {
             return result[0];
         } catch (error) {
             if (error instanceof Error) {
-                // throw new Error(400, "error.message");
+                throw new BaseError(400, "erro no PokemonDB");
             }
         }
     }
@@ -45,7 +46,7 @@ export class PokemonDataBase extends BaseDatabase {
             return result[0];
         } catch (error) {
             if (error instanceof Error) {
-                // throw new Error(400, "error.message");
+                throw new BaseError(400, "erro no PokemonDB");
             }
         }
     };
@@ -60,7 +61,7 @@ export class PokemonDataBase extends BaseDatabase {
            
         } catch (error) {
             if (error instanceof Error) {
-                // throw new Error(400, "error.message");
+                throw new BaseError(400, "erro no PokemonDB");
             }
         }
     }
