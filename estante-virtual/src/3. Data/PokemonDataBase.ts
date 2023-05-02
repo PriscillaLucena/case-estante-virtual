@@ -3,6 +3,8 @@ import { BaseError } from "../Error/BaseError";
 import { BaseDatabase } from "./BaseDataBase";
 
 
+
+
 export class PokemonDataBase extends BaseDatabase {
 
     private static TABLE_NAME = "Pokemon";
@@ -12,7 +14,8 @@ export class PokemonDataBase extends BaseDatabase {
         try {
             const result = await this.getConnection()
                 .select("*")
-                .where({ input })
+                .where({ name: input })
+                .orWhere({ type_1: input })
                 .into(PokemonDataBase.TABLE_NAME);
             return result[0];
         } catch (error) {
@@ -22,7 +25,22 @@ export class PokemonDataBase extends BaseDatabase {
         }
     }
 
-    public getPokes = async (): Promise<any> => {
+    public getPokeById = async (input: string): Promise<any> => {
+        try {
+            const result = await this.getConnection()
+                .select("*")
+                .where({ id: input })
+                .into(PokemonDataBase.TABLE_NAME);
+            return result[0];
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new BaseError(400, "erro no PokemonDB");
+            }
+        }
+    }
+
+
+    public getAllPokes = async (): Promise<any> => {
         try {
             const result = await this.getConnection()
                 .select("*")
@@ -37,13 +55,15 @@ export class PokemonDataBase extends BaseDatabase {
     }
 
 
-    public alterPokes = async (input: any): Promise<any> => {
+    public alterPokes = async (field: string, body: any, id: string): Promise<any> => {
         try {
-            const result = await this.getConnection()
-                .insert({ input })
-                .into(PokemonDataBase.TABLE_NAME);
+            const message = "Pokemon editado com sucesso!"
 
-            return result[0];
+            await this.getConnection().raw(`
+            UPDATE Pokemon SET ${field} = "${body}" WHERE id = "${id}"; 
+            `)
+
+            return message
         } catch (error) {
             if (error instanceof Error) {
                 throw new BaseError(400, "erro no PokemonDB");
@@ -55,8 +75,24 @@ export class PokemonDataBase extends BaseDatabase {
     //-------------------------. verificar se vai dar boa esse input    
     public createPoke = async (input: any): Promise<any> => {
         try {
+
             await this.getConnection()
             .insert({input})
+            .into(PokemonDataBase.TABLE_NAME);
+           
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new BaseError(400, "erro no PokemonDB");
+            }
+        }
+    }
+
+    public deletePoke = async (input: any): Promise<any> => {
+        try {
+
+            await this.getConnection()
+            .delete("*")
+            .where({id: input})
             .into(PokemonDataBase.TABLE_NAME);
            
         } catch (error) {

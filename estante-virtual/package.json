@@ -20,7 +20,9 @@
     "ts-node-dev": "^2.0.0"
   },
   "dependencies": {
+    "@types/knex": "^0.16.1",
     "dotenv": "^16.0.3",
+    "knex": "^2.4.2",
     "uuidv4": "^6.2.13"
   }
 }

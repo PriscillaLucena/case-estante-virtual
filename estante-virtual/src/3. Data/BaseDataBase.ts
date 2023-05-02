@@ -1,10 +1,12 @@
-import knex from "knex";
-import Knex   from "knex";
+import {Knex, knex} from "knex";
+import dotenv from "dotenv"
+
+dotenv.config()
 
 
 export abstract class BaseDatabase {
 
-    private static connection: Knex | null = null;
+    private static connection: Knex 
 
     protected getConnection(): Knex{
         if(!BaseDatabase.connection){
@@ -23,10 +25,5 @@ export abstract class BaseDatabase {
         return BaseDatabase.connection;
     }
 
-    public static async destroyConnection(): Promise<void>{
-        if(BaseDatabase.connection){
-            await BaseDatabase.connection.destroy();
-            BaseDatabase.connection = null;
-        }
-    }
+
 }
