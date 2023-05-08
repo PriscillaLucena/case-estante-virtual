@@ -308,3 +308,35 @@ export interface PokemonDTO {
     cp_40: string,
     cp_39: string
 }
+
+export interface CriaPokeDTO {
+    name: string,
+    pokedex_number: string,
+    img_name: string,
+    generation: string,
+    evolution_stage: string,
+    evolved: string,
+    family_id: string,
+    cross_gen: string,
+    type_1: string,
+    type_2: string,
+    weather_1: string,
+    weather_2: string,
+    stat_total: string,
+    atk: string,
+    def: string,
+    sta: string,
+    legendary: string,
+    aquireable: string,
+    spawns: string,
+    regional: string,
+    raidable: string,
+    hatchable: string,
+    shiny: string,
+    nest: string,
+    new_poke: string,
+    not_gettable: string,
+    future_evolve: string,
+    cp_40: string,
+    cp_39: string
+}

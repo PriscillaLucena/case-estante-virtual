@@ -3,30 +3,36 @@ import { BaseError } from "../Error/BaseError";
 import { PokemonDTO } from "../models/PokemonModel";
 import { IdGenerator } from "../services/IdGenerator";
 
-const pokeDB = new PokemonDataBase();
-const idGenerator = new IdGenerator();
-
 export class PokemonBusiness {
+    constructor(
+        private pokeDB: PokemonDataBase,
+        private idGenerator: IdGenerator
+    ) { }
 
     public findPoke = async (input: string): Promise<any> => {
         try {
 
-            const queryResult: any = await pokeDB.findPoke(input)
+            console.log(input, "input no business")
+
 
             if (!input) {
                 throw new BaseError(412, "Necessário passar algum nome para procurar");
-
             }
 
-            if (!queryResult[0]) {
+            const queryResult: any = await this.pokeDB.findPoke(input)
+
+            console.log("query no business", queryResult)
+
+
+            if (!queryResult) {
                 throw new BaseError(400, "Não foi encontrado nenhum pokemon")
             };
 
-            return queryResult[0]
+            return queryResult
 
         } catch (error) {
             if (error instanceof Error) {
-                throw new BaseError(400, "erro no PokemonBusiness");
+                throw new BaseError(400, error.message);
             }
         }
     };
@@ -35,22 +41,22 @@ export class PokemonBusiness {
     public getPokeById = async (input: string): Promise<any> => {
         try {
 
-            const queryResult: any = await pokeDB.getPokeById(input)
+            let queryResult: any = await this.pokeDB.getPokeById(input)
 
             if (!input) {
-                throw new Error("Necessário passar id");
-
-            }
-
-            if (!queryResult[0]) {
-                throw new Error("Não foi encontrado nenhum pokemon")
+                throw new BaseError(400, "Necessário passar id");
             };
 
-            return queryResult[0]
+
+            if (!queryResult) {
+                throw new BaseError(400, "Não foi encontrado nenhum pokemon")
+            };
+
+            return queryResult
 
         } catch (error) {
             if (error instanceof Error) {
-                throw new BaseError(400, "erro no PokemonBusiness");
+                throw new BaseError(400, error.message);
             }
         }
     };
@@ -58,114 +64,110 @@ export class PokemonBusiness {
     public getAllPokes = async (): Promise<any> => {
         try {
 
-            const queryResult: any = await pokeDB.getAllPokes()
+            const queryResult: any = await this.pokeDB.getAllPokes()
 
-            if (!queryResult[0]) {
+            if (!queryResult) {
                 throw new BaseError(400, "Não foi encontrado nenhum pokemon")
             };
 
-            return queryResult[0]
+            return queryResult
 
         } catch (error) {
             if (error instanceof Error) {
-                throw new BaseError(400, "erro no PokemonBusiness");
+                throw new BaseError(400, error.message);
             }
         }
     };
 
-    public alterPokes = async (field: string, body: any, id: string): Promise<any> => {
-
-        const message = `Alteração de ${id} feita com sucesso!`
+    public alterPokes = async (field: string, body: any, id: string): Promise<void> => {
 
         try {
 
-        } catch (error) {
-            if (error instanceof Error) {
-                throw new BaseError(400, "erro no PokemonBusiness");
-            }
-        }
-
-
-        await pokeDB.alterPokes(field, body, id)
-
-        if (!field) {
-            throw new BaseError(412, "Necessário informar campo para alterar")
-        };
-
-        if (!body) {
-            throw new BaseError(412, "Necessário passar informações para alterar")
-        };
-
-        if (!id) {
-            throw new BaseError(412, "Necessário informar id para alterar")
-        };
-
-        return message
-
-    };
-
-    public createPoke = async (input: any): Promise<any> => {
-
-        const message = `Inclusão feita com sucesso!`
-
-        try {
-
-            const { name, pokedex_number, img_name, generation, evolution_stage, evolved, family_id, cross_gen,
-                type_1, type_2, weather_1, weather_2, stat_total, atk, def, sta, legendary, aquireable, spawns,
-                regional, raidable, hatchable, shiny, nest, new_poke, not_gettable, future_evolve, cp_40,
-                cp_39 } = input
-
-            const id: string = idGenerator.generate();
-
-            const newPoke: PokemonDTO = {
-                id: id,
-                name,
-                pokedex_number,
-                img_name,
-                generation,
-                evolution_stage,
-                evolved,
-                family_id,
-                cross_gen,
-                type_1,
-                type_2,
-                weather_1,
-                weather_2,
-                stat_total,
-                atk,
-                def,
-                sta,
-                legendary,
-                aquireable,
-                spawns,
-                regional,
-                raidable,
-                hatchable,
-                shiny,
-                nest,
-                new_poke,
-                not_gettable,
-                future_evolve,
-                cp_40,
-                cp_39
+            if (!field) {
+                throw new BaseError(412, "selecionar algo para alterar")
             };
 
-            await pokeDB.createPoke(newPoke);
+            if (!body) {
+                throw new BaseError(412, "Necessário passar informações para alterar")
+            };
 
-            return message
+            if (!id) {
+                throw new BaseError(412, "Necessário informar id para alterar")
+            };
+
+            await this.pokeDB.alterPokes(field, body, id)
+
 
         } catch (error) {
             if (error instanceof Error) {
-                throw new BaseError(400, "erro no PokemonBusiness");
+                throw new BaseError(400, error.message);
             }
         }
     };
 
-    public deletPoke = async (input: any): Promise<any> => {
+    // public createPoke = async (input: any): Promise<any> => {
+
+    //     const message = `Inclusão feita com sucesso!`
+
+    //     try {
+
+    //         const { name, pokedex_number, img_name, generation, evolution_stage, evolved, family_id, cross_gen,
+    //             type_1, type_2, weather_1, weather_2, stat_total, atk, def, sta, legendary, aquireable, spawns,
+    //             regional, raidable, hatchable, shiny, nest, new_poke, not_gettable, future_evolve, cp_40,
+    //             cp_39 } = input
+
+    //         const id: string = this.idGenerator.generate();
+
+    //         const newPoke: PokemonDTO = {
+    //             id: id,
+    //             name,
+    //             pokedex_number,
+    //             img_name,
+    //             generation,
+    //             evolution_stage,
+    //             evolved,
+    //             family_id,
+    //             cross_gen,
+    //             type_1,
+    //             type_2,
+    //             weather_1,
+    //             weather_2,
+    //             stat_total,
+    //             atk,
+    //             def,
+    //             sta,
+    //             legendary,
+    //             aquireable,
+    //             spawns,
+    //             regional,
+    //             raidable,
+    //             hatchable,
+    //             shiny,
+    //             nest,
+    //             new_poke,
+    //             not_gettable,
+    //             future_evolve,
+    //             cp_40,
+    //             cp_39
+    //         };
+
+
+    //         await this.pokeDB.createPoke(newPoke);
+
+    //         return message
+
+    //     } catch (error) {
+    //         if (error instanceof Error) {
+    //             throw new BaseError(400, error.message);
+    //         }
+    //     }
+    // };
+
+    public deletePoke = async (input: any): Promise<any> => {
         const message = `Deleção de ${input} feita com sucesso!`
 
         try {
-            await pokeDB.deletePoke(input);
+            await this.pokeDB.deletePoke(input);
 
             if (!input) {
                 throw new BaseError(412, "Necessário informar id para deletar")
@@ -174,7 +176,7 @@ export class PokemonBusiness {
             return message
         } catch (error) {
             if (error instanceof Error) {
-                throw new BaseError(400, "erro no PokemonBusiness");
+                throw new BaseError(400, error.message);
             }
         }
 
