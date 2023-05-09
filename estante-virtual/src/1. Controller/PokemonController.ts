@@ -58,7 +58,7 @@ export class PokemonController {
         try {
 
             const { field, body } = req.body;
-            const id = req.params.id
+            const id = String(req.params.id)
 
             await this.pokeBusiness.alterPokes(field, body, id)
 

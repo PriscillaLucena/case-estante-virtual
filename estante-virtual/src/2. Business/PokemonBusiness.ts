@@ -44,7 +44,7 @@ export class PokemonBusiness {
             let queryResult: any = await this.pokeDB.getPokeById(input)
 
             if (!input) {
-                throw new BaseError(400, "Necessário passar id");
+                throw new BaseError(412, "Necessário passar id");
             };
 
 
@@ -158,6 +158,12 @@ export class PokemonBusiness {
                 cp_39
             };
 
+            if (!name || !pokedex_number || !img_name || !generation || !evolution_stage || !evolved || !family_id 
+                || !cross_gen || !type_1 || !type_2 || !weather_1 || !weather_2 || !stat_total || !atk || !def || !sta 
+                || !legendary || !aquireable|| !spawns || !regional || !raidable || !hatchable || !shiny || !nest 
+                || !new_poke || !not_gettable || !future_evolve || !cp_40 || !cp_39) {
+                    throw new BaseError(412, "Falta algum parâmetro, verifique novamente todos os campos inseridos");
+                }
 
             await this.pokeDB.createPokes(newPoke);
 
