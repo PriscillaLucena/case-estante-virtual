@@ -42,8 +42,9 @@ export class PokemonController {
 
     public getAllPokes = async (req: Request, res: Response): Promise<any> => {
         try {
+            const page = Number(req.query.page) 
 
-            const pokemonList = await this.pokeBusiness.getAllPokes()
+            const pokemonList = await this.pokeBusiness.getAllPokes(page)
 
             res.status(200).send(pokemonList)
 

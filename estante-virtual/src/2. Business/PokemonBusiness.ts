@@ -61,10 +61,16 @@ export class PokemonBusiness {
         }
     };
 
-    public getAllPokes = async (): Promise<any> => {
+    public getAllPokes = async (page: number): Promise<any> => {
         try {
 
-            const queryResult: any = await this.pokeDB.getAllPokes()
+            if (!page) {
+                page = 1
+            };
+
+            const queryResult: any = await this.pokeDB.getAllPokes(page)
+
+            console.log("page no business",page)
 
             if (!queryResult) {
                 throw new BaseError(400, "Não foi encontrado nenhum pokemon")

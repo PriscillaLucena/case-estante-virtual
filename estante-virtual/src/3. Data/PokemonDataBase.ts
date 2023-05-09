@@ -13,7 +13,7 @@ export class PokemonDataBase extends BaseDatabase {
             console.log(input, "input no db")
             const result = await this.getConnection()
                 .select("*")
-                .where({name: input})
+                .where({ name: input })
                 // .orWhere({ type_1: input })
                 .into(PokemonDataBase.TABLE_NAME);
 
@@ -35,34 +35,30 @@ export class PokemonDataBase extends BaseDatabase {
             return result[0];
         } catch (error) {
             if (error instanceof Error) {
-                 throw new BaseError(400, error.message);
+                throw new BaseError(400, error.message);
             }
         }
     }
 
 
-    public getAllPokes = async (): Promise<any> => {
+    public getAllPokes = async (page: number): Promise<any> => {
         try {
-            const offset = result.length
 
-console.log(offset)
+            let size = 10;
+            let offset = size * (page - 1)
+
             const result = await this.getConnection()
                 .select("*")
-                .into(PokemonDataBase.TABLE_NAME);
-                
-                const paginas = awair this.getConnection()
-                .select("*")
-                .into(PokemonDataBase.TABLE_NAME)
-                .limit(10)
+                .limit(size)
                 .offset(offset)
+                .into(PokemonDataBase.TABLE_NAME)
 
-            
-          console.log(result.length)
+            console.log("page no db", page)
 
             return result;
         } catch (error) {
             if (error instanceof Error) {
-                 throw new BaseError(400, error.message);
+                throw new BaseError(400, error.message);
             }
         }
     }
@@ -80,7 +76,7 @@ console.log(offset)
             return message
         } catch (error) {
             if (error instanceof Error) {
-                 throw new BaseError(400, error.message);
+                throw new BaseError(400, error.message);
             }
         }
     };
@@ -93,7 +89,7 @@ console.log(offset)
     //         await this.getConnection()
     //         .insert({input})
     //         .into(PokemonDataBase.TABLE_NAME);
-           
+
     //     } catch (error) {
     //         if (error instanceof Error) {
     //              throw new BaseError(400, error.message);
@@ -105,13 +101,13 @@ console.log(offset)
         try {
 
             await this.getConnection()
-            .delete("*")
-            .where({id: input})
-            .into(PokemonDataBase.TABLE_NAME);
-           
+                .delete("*")
+                .where({ id: input })
+                .into(PokemonDataBase.TABLE_NAME);
+
         } catch (error) {
             if (error instanceof Error) {
-                 throw new BaseError(400, error.message);
+                throw new BaseError(400, error.message);
             }
         }
     }

@@ -14,8 +14,9 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/poke/get_all
+GET http://localhost:3000/poke/get_all?page=30
 Content-Type: application/json
+
 
 ###
 PATCH  http://localhost:3000/poke/alterate
