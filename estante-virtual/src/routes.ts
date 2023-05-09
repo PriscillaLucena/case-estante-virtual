@@ -13,10 +13,10 @@ const pokeBusiness = new PokemonBusiness(
 
 const pokeController = new PokemonController(pokeBusiness);
 
-pokeRouter.get("/find_name", pokeController.findPoke);
-pokeRouter.get("/find_id", pokeController.getPokeById);
+pokeRouter.get("/find_name", pokeController.findPokeByName);
+pokeRouter.get("/find_id/:id", pokeController.getPokeById);
 pokeRouter.get("/get_all", pokeController.getAllPokes);
 pokeRouter.patch("/alterate", pokeController.alterPokes);
-// pokeRouter.post("/create", pokeController.createPokes);
-pokeRouter.delete("/delete", pokeController.deletePoke);
+pokeRouter.post("/create", pokeController.createPokes);
+pokeRouter.delete("/delete/:id", pokeController.deletePoke);
 

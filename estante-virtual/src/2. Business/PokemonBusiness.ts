@@ -9,17 +9,17 @@ export class PokemonBusiness {
         private idGenerator: IdGenerator
     ) { }
 
-    public findPoke = async (input: string): Promise<any> => {
+    public findPokeByName = async (input: string): Promise<any> => {
         try {
 
-            console.log(input, "input no business")
-
-
+           
             if (!input) {
                 throw new BaseError(412, "Necessário passar algum nome para procurar");
-            }
+            };
 
-            const queryResult: any = await this.pokeDB.findPoke(input)
+            const nameTratado: string = input[0].toLocaleUpperCase() + input.substring(1)
+            
+            const queryResult: any = await this.pokeDB.findPokeByName(nameTratado)
 
             console.log("query no business", queryResult)
 
@@ -70,7 +70,7 @@ export class PokemonBusiness {
 
             const queryResult: any = await this.pokeDB.getAllPokes(page)
 
-            console.log("page no business",page)
+            console.log("page no business", page)
 
             if (!queryResult) {
                 throw new BaseError(400, "Não foi encontrado nenhum pokemon")
@@ -111,63 +111,64 @@ export class PokemonBusiness {
         }
     };
 
-    // public createPoke = async (input: any): Promise<any> => {
+    public createPokes = async (input: any): Promise<any> => {
 
-    //     const message = `Inclusão feita com sucesso!`
+        const message = `Inclusão feita com sucesso!`
 
-    //     try {
+        try {
 
-    //         const { name, pokedex_number, img_name, generation, evolution_stage, evolved, family_id, cross_gen,
-    //             type_1, type_2, weather_1, weather_2, stat_total, atk, def, sta, legendary, aquireable, spawns,
-    //             regional, raidable, hatchable, shiny, nest, new_poke, not_gettable, future_evolve, cp_40,
-    //             cp_39 } = input
+            const { name, pokedex_number, img_name, generation, evolution_stage, evolved, family_id, cross_gen,
+                type_1, type_2, weather_1, weather_2, stat_total, atk, def, sta, legendary, aquireable, spawns,
+                regional, raidable, hatchable, shiny, nest, new_poke, not_gettable, future_evolve, cp_40,
+                cp_39 } = input
 
-    //         const id: string = this.idGenerator.generate();
+            const id: string = this.idGenerator.generate();
+            const nameTratado: string = name[0].toLocaleUpperCase() + name.substring(1)
 
-    //         const newPoke: PokemonDTO = {
-    //             id: id,
-    //             name,
-    //             pokedex_number,
-    //             img_name,
-    //             generation,
-    //             evolution_stage,
-    //             evolved,
-    //             family_id,
-    //             cross_gen,
-    //             type_1,
-    //             type_2,
-    //             weather_1,
-    //             weather_2,
-    //             stat_total,
-    //             atk,
-    //             def,
-    //             sta,
-    //             legendary,
-    //             aquireable,
-    //             spawns,
-    //             regional,
-    //             raidable,
-    //             hatchable,
-    //             shiny,
-    //             nest,
-    //             new_poke,
-    //             not_gettable,
-    //             future_evolve,
-    //             cp_40,
-    //             cp_39
-    //         };
+            const newPoke: PokemonDTO = {
+                id: id,
+                name: nameTratado,
+                pokedex_number,
+                img_name,
+                generation,
+                evolution_stage,
+                evolved,
+                family_id,
+                cross_gen,
+                type_1,
+                type_2,
+                weather_1,
+                weather_2,
+                stat_total,
+                atk,
+                def,
+                sta,
+                legendary,
+                aquireable,
+                spawns,
+                regional,
+                raidable,
+                hatchable,
+                shiny,
+                nest,
+                new_poke,
+                not_gettable,
+                future_evolve,
+                cp_40,
+                cp_39
+            };
 
 
-    //         await this.pokeDB.createPoke(newPoke);
+            await this.pokeDB.createPokes(newPoke);
 
-    //         return message
+            return message
 
-    //     } catch (error) {
-    //         if (error instanceof Error) {
-    //             throw new BaseError(400, error.message);
-    //         }
-    //     }
-    // };
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new BaseError(400, error.message);
+            }
+        }
+    };
 
     public deletePoke = async (input: any): Promise<any> => {
         const message = `Deleção de ${input} feita com sucesso!`
