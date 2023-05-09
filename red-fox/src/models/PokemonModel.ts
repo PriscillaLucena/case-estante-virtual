@@ -30,247 +30,247 @@ export class Pokemon {
         private future_evolve: string,
         private cp_40: string,
         private cp_39: string
-    ){}
+    ) { }
 
-    getId(){
+    getId() {
         return this.id;
     };
 
-    getName(){
+    getName() {
         return this.name
     };
 
-    getPokedexNumber(){
+    getPokedexNumber() {
         return this.pokedex_number
     };
 
-    getImgName(){
+    getImgName() {
         return this.img_name
     };
 
-    getGeneration(){
+    getGeneration() {
         return this.generation
     };
 
-    getEvolutionStage(){
+    getEvolutionStage() {
         return this.evolution_stage
     };
 
-    getEvolved(){
+    getEvolved() {
         return this.evolved
     };
 
-    getFamilyId(){
+    getFamilyId() {
         return this.family_id
     };
 
-    getCrossGen(){
+    getCrossGen() {
         return this.cross_gen
     };
 
-    getType1(){
+    getType1() {
         return this.type_1
     };
 
-    getType2(){
+    getType2() {
         return this.type_2
     };
 
-    getWeather1(){
+    getWeather1() {
         return this.weather_1
     };
 
-    getWeather2(){
+    getWeather2() {
         return this.weather_2
     };
 
-    getStatTotal(){
+    getStatTotal() {
         return this.stat_total
     };
 
-    getAtk(){
+    getAtk() {
         return this.atk
     };
 
-    getDef(){
+    getDef() {
         return this.def
     };
 
-    getSta(){
+    getSta() {
         return this.sta
     };
 
-    getLegendary(){
+    getLegendary() {
         return this.legendary
     };
 
-    getAquireable(){
+    getAquireable() {
         return this.aquireable
     };
 
-    getSpawns(){
+    getSpawns() {
         return this.spawns
     };
 
-    getRegional(){
+    getRegional() {
         return this.regional
     };
 
-    getRaidable(){
+    getRaidable() {
         return this.raidable
     };
 
-    getHatchable(){
+    getHatchable() {
         return this.hatchable
     };
 
-    getShiny(){
+    getShiny() {
         return this.shiny
     };
 
-    getNest(){
+    getNest() {
         return this.nest
     };
 
-    getNewPoke(){
+    getNewPoke() {
         return this.new_poke
     };
 
-    getNotGettable(){
+    getNotGettable() {
         return this.not_gettable
     };
 
-    getFutureEvolve(){
+    getFutureEvolve() {
         return this.future_evolve
     };
 
-    getCp40(){
+    getCp40() {
         return this.cp_40
     };
 
-    getCp39(){
+    getCp39() {
         return this.cp_39
     };
 
     // --------------------Setters------------------------
 
-    setId(id: string){
+    setId(id: string) {
         this.id = id
     };
 
-    setName(name: string){
+    setName(name: string) {
         this.name = name
     };
 
-    setPokedexNumber(pokedex_number: string){
+    setPokedexNumber(pokedex_number: string) {
         this.pokedex_number = pokedex_number
     };
 
-    setImgName(img_name: string){
+    setImgName(img_name: string) {
         this.img_name = img_name
     };
 
-    setGeneration(generation: string){
+    setGeneration(generation: string) {
         this.generation = generation
     };
 
-    setEvolutionStage(evolution_stage: string){
+    setEvolutionStage(evolution_stage: string) {
         this.evolution_stage = evolution_stage
     };
 
-    setEvolved(evolved: string){
+    setEvolved(evolved: string) {
         this.evolved = evolved
     };
 
-    setFamilyId(family_id: string){
+    setFamilyId(family_id: string) {
         this.family_id = family_id
     };
 
-    setCrossGen(cross_gen: string){
+    setCrossGen(cross_gen: string) {
         this.cross_gen = cross_gen
     };
 
-    setType1(type_1: string){
+    setType1(type_1: string) {
         this.type_1 = type_1
     };
 
-    setType2(type_2: string){
+    setType2(type_2: string) {
         this.type_2 = type_2
     };
 
-    setWeather1(weather_1: string){
+    setWeather1(weather_1: string) {
         this.weather_1 = weather_1
     };
 
-    setWeather2(weather_2: string){
+    setWeather2(weather_2: string) {
         this.weather_2 = weather_2
     };
 
-    setStatTotal(stat_total: string){
+    setStatTotal(stat_total: string) {
         this.stat_total = stat_total
     };
 
-    setAtk(atk: string){
+    setAtk(atk: string) {
         this.atk = atk
     };
 
-    setDef(def: string){
+    setDef(def: string) {
         this.def = def
     };
 
-    setSta(sta: string){
+    setSta(sta: string) {
         this.sta = sta
     };
 
-    setLegendary(legendary: string){
+    setLegendary(legendary: string) {
         this.legendary = legendary
     };
 
-    setAquireable(aquireable: string){
+    setAquireable(aquireable: string) {
         this.aquireable = aquireable
     };
 
-    setSpawns(spawns: string){
+    setSpawns(spawns: string) {
         this.spawns = spawns
     };
 
-    setRegional(regional: string){
+    setRegional(regional: string) {
         this.regional = regional
     };
 
-    setRaidable(raidable: string){
+    setRaidable(raidable: string) {
         this.raidable = raidable
     };
 
-    setHatchable(hatchable: string){
+    setHatchable(hatchable: string) {
         this.hatchable = hatchable
     };
 
-    setShiny(shiny: string){
+    setShiny(shiny: string) {
         this.shiny = shiny
     };
 
-    setNest(nest: string){
+    setNest(nest: string) {
         this.nest = nest
     };
 
-    setNewPoke(new_poke: string){
+    setNewPoke(new_poke: string) {
         this.new_poke = new_poke
     };
 
-    setNotGettable(not_gettable: string){
+    setNotGettable(not_gettable: string) {
         this.not_gettable = not_gettable
     };
 
-    setFutureEvolve(future_evolve: string){
+    setFutureEvolve(future_evolve: string) {
         this.future_evolve = future_evolve
     };
 
-    setCp40(cp_40: string){
+    setCp40(cp_40: string) {
         this.cp_40 = cp_40
     };
 
-    setCp39(cp_40: string){
+    setCp39(cp_40: string) {
         this.cp_39 = cp_40
     };
 };
