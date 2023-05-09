@@ -9,16 +9,17 @@ export class PokemonBusiness {
         private idGenerator: IdGenerator
     ) { }
 
+    // --------------------Busca um Pokemón pelo seu nome-------------------
     public findPokeByName = async (input: string): Promise<any> => {
         try {
 
-           
+
             if (!input) {
                 throw new BaseError(412, "Necessário passar algum nome para procurar");
             };
 
             const nameTratado: string = input[0].toLocaleUpperCase() + input.substring(1)
-            
+
             const queryResult: any = await this.pokeDB.findPokeByName(nameTratado)
 
             console.log("query no business", queryResult)
@@ -37,7 +38,7 @@ export class PokemonBusiness {
         }
     };
 
-
+    // --------------------filtra um Pokemón pelo seu id-------------------
     public getPokeById = async (input: string): Promise<any> => {
         try {
 
@@ -61,6 +62,7 @@ export class PokemonBusiness {
         }
     };
 
+    // --------Lista todos os Pokemóns e suas informações (páginas a cada 10 pokemons)------------
     public getAllPokes = async (page: number): Promise<any> => {
         try {
 
@@ -85,6 +87,7 @@ export class PokemonBusiness {
         }
     };
 
+    // ---------faz a alteração de qualquer informação de um Pokemón pelo seu id-------------
     public alterPokes = async (field: string, body: any, id: string): Promise<void> => {
 
         try {
@@ -111,6 +114,7 @@ export class PokemonBusiness {
         }
     };
 
+    // -----------------------cria um novo Pokemón -----------------------
     public createPokes = async (input: any): Promise<any> => {
 
         const message = `Inclusão feita com sucesso!`
@@ -158,12 +162,12 @@ export class PokemonBusiness {
                 cp_39
             };
 
-            if (!name || !pokedex_number || !img_name || !generation || !evolution_stage || !evolved || !family_id 
-                || !cross_gen || !type_1 || !type_2 || !weather_1 || !weather_2 || !stat_total || !atk || !def || !sta 
-                || !legendary || !aquireable|| !spawns || !regional || !raidable || !hatchable || !shiny || !nest 
+            if (!name || !pokedex_number || !img_name || !generation || !evolution_stage || !evolved || !family_id
+                || !cross_gen || !type_1 || !type_2 || !weather_1 || !weather_2 || !stat_total || !atk || !def || !sta
+                || !legendary || !aquireable || !spawns || !regional || !raidable || !hatchable || !shiny || !nest
                 || !new_poke || !not_gettable || !future_evolve || !cp_40 || !cp_39) {
-                    throw new BaseError(412, "Falta algum parâmetro, verifique novamente todos os campos inseridos");
-                }
+                throw new BaseError(412, "Falta algum parâmetro, verifique novamente todos os campos inseridos");
+            }
 
             await this.pokeDB.createPokes(newPoke);
 
@@ -176,6 +180,7 @@ export class PokemonBusiness {
         }
     };
 
+    // --------------------deleta um Pokemón através do seu id-------------------
     public deletePoke = async (input: any): Promise<any> => {
         const message = `Deleção de ${input} feita com sucesso!`
 

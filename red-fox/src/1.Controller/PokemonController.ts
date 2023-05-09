@@ -8,13 +8,15 @@ export class PokemonController {
         private pokeBusiness: PokemonBusiness
     ) { }
 
+
+    // --------------------filtra um Pokemón pelo seu nome-------------------
     public findPokeByName = async (req: Request, res: Response): Promise<any> => {
         try {
 
             const name = String(req.query.name);
 
             const pokemonList: any = await this.pokeBusiness.findPokeByName(name)
-        
+
             res.status(200).send(pokemonList)
 
         } catch (error) {
@@ -24,6 +26,7 @@ export class PokemonController {
         };
     };
 
+    // --------------------filtra um Pokemón pelo seu id-------------------
     public getPokeById = async (req: Request, res: Response): Promise<any> => {
         try {
 
@@ -40,9 +43,10 @@ export class PokemonController {
         };
     };
 
+    // --------Lista todos os Pokemóns e suas informações (páginas a cada 10 pokemons)------------
     public getAllPokes = async (req: Request, res: Response): Promise<any> => {
         try {
-            const page = Number(req.query.page) 
+            const page = Number(req.query.page)
             const pokemonList = await this.pokeBusiness.getAllPokes(page)
 
             res.status(200).send(pokemonList)
@@ -54,6 +58,7 @@ export class PokemonController {
         };
     };
 
+    // ---------faz a alteração de qualquer informação de um Pokemón pelo seu id-------------
     public alterPokes = async (req: Request, res: Response): Promise<void> => {
         try {
 
@@ -71,6 +76,7 @@ export class PokemonController {
         };
     };
 
+    // -----------------------cria um novo Pokemón -----------------------
     public createPokes = async (req: Request, res: Response): Promise<void> => {
         try {
 
@@ -79,11 +85,12 @@ export class PokemonController {
                 regional, raidable, hatchable, shiny, nest, new_poke, not_gettable, future_evolve, cp_40,
                 cp_39 } = req.body;
 
-                const input: CriaPokeDTO = {
-                    name, pokedex_number, img_name, generation, evolution_stage, evolved, family_id, cross_gen,
+            const input: CriaPokeDTO = {
+                name, pokedex_number, img_name, generation, evolution_stage, evolved, family_id, cross_gen,
                 type_1, type_2, weather_1, weather_2, stat_total, atk, def, sta, legendary, aquireable, spawns,
                 regional, raidable, hatchable, shiny, nest, new_poke, not_gettable, future_evolve, cp_40,
-                cp_39 }
+                cp_39
+            }
 
             await this.pokeBusiness.createPokes(input)
 
@@ -96,10 +103,11 @@ export class PokemonController {
         };
     };
 
+    // --------------------deleta um Pokemón através do seu id-------------------
     public deletePoke = async (req: Request, res: Response): Promise<void> => {
         try {
 
-            const id  = req.params.id;
+            const id = req.params.id;
 
             await this.pokeBusiness.deletePoke(id)
 
