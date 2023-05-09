@@ -62,7 +62,7 @@ export class PokemonBusiness {
         }
     };
 
-    // --------Lista todos os Pokemóns e suas informações (páginas a cada 10 pokemons)------------
+    // -------Lista todos os Pokemóns e suas informações (páginas a cada 10 pokemons)----------
     public getAllPokes = async (page: number): Promise<any> => {
         try {
 
