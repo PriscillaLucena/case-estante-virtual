@@ -1,0 +1,63 @@
+GET http://localhost:3000/poke/find_name?name=
+Content-Type: application/json
+
+
+###
+GET http://localhost:3000/poke/find_id/822
+Content-Type: application/json
+
+
+###
+GET http://localhost:3000/poke/get_all?page=10
+Content-Type: application/json
+
+
+###
+PATCH  http://localhost:3000/poke/alterate/820
+Content-Type: application/json
+
+{
+    "field": "generation",
+    "body": "7"
+}
+
+###
+POST  http://localhost:3000/poke/create
+Content-Type: application/json
+
+{
+    "name": "prikalan",
+    "pokedex_number": "3",
+    "img_name": "3",
+    "generation": "7",
+    "evolution_stage": "2",
+    "evolved": "1",
+    "family_id": "1",
+    "cross_gen": "0",
+    "type_1": "fire",
+    "type_2": "poison",
+    "weather_1": "Rainy",
+    "weather_2": "Cloudy",
+    "stat_total": "800",
+    "atk": "198",
+    "def": "198",
+    "sta": "160",
+    "legendary": "1",
+    "aquireable": "1",
+    "spawns": "1",
+    "regional":"0",
+    "raidable":"0",
+    "hatchable":"0",
+    "shiny":"0",
+    "nest":"0",
+    "new_poke":"0",
+    "not_gettable":"0",
+    "future_evolve":"0",
+    "cp_40":"2568",
+    "cp_39":"2531"
+}
+
+
+###
+DELETE  http://localhost:3000/poke/delete/e0095ab5-02bb-4937-b2d4-c86b8738883d
+Content-Type: application/json
