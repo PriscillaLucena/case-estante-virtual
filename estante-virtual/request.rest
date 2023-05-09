@@ -1,4 +1,4 @@
-GET http://localhost:3000/poke/find_name?name=gustachu
+GET http://localhost:3000/poke/find_name?name=
 Content-Type: application/json
 
 

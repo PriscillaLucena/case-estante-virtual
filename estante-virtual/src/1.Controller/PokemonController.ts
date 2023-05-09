@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { PokemonBusiness } from "../2. Business/PokemonBusiness";
+import { PokemonBusiness } from "../2.Business/PokemonBusiness";
 import { BaseError } from "../Error/BaseError";
 import { CriaPokeDTO } from "../models/PokemonModel";
 

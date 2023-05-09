@@ -1,7 +1,7 @@
 import express from "express";
-import { PokemonController } from "./1. Controller/PokemonController";
-import { PokemonBusiness } from "./2. Business/PokemonBusiness";
-import { PokemonDataBase } from "./3. Data/PokemonDataBase";
+import { PokemonController } from "./1.Controller/PokemonController";
+import { PokemonBusiness } from "./2.Business/PokemonBusiness";
+import { PokemonDataBase } from "./3.Data/PokemonDataBase";
 import { IdGenerator } from "./services/IdGenerator";
 
 export const pokeRouter = express.Router();

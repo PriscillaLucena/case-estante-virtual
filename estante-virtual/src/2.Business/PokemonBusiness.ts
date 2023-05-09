@@ -1,4 +1,4 @@
-import { PokemonDataBase } from "../3. Data/PokemonDataBase";
+import { PokemonDataBase } from "../3.Data/PokemonDataBase";
 import { BaseError } from "../Error/BaseError";
 import { PokemonDTO } from "../models/PokemonModel";
 import { IdGenerator } from "../services/IdGenerator";
